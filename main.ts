@@ -4,8 +4,7 @@ for(const d of R(e)){
 const p=F(e+'/'+d+'/program.bin'),I=F(e+'/'+d+'/input.bin'),D=[],C=[],m=[],f=O+'/'+d
 let s=0,i=0,c=0,t,A,B,L,h,o=''
 try{for(t=1e6;t--;){
-const q=p[c]??256,v=T.charCodeAt(q)-35,u=v&3,z=c+1+(v>>2)
-const b=D[s-1],a=D[s-2],y=p[z-2]|p[z-1]<<8
+const q=p[c]??256,v=T.charCodeAt(q)-35,u=v&3,z=c+1+(v>>2),b=D[s-1],a=D[s-2],y=p[z-2]|p[z-1]<<8
 if(!(v>=0)|z>p.length)throw v>=0|q>>8?9:5
 if(s<u)throw 2
 c=z
@@ -18,9 +17,11 @@ if(q>47&q<51&&(!u||(q>49?b:!b)))c=z+(y<<16>>16)
 if(q==51){if(C.push(z)>64)throw 7
 c=y}
 if(q==52&&(c=C.pop())==null)throw 8
-if(q>>1==32){if(b>>>0>255)throw 6
+if(q>>1==32){
+if(b>>>0>255)throw 6
 q&1?m[b]=a:L=[m[b]|0]}
-if(q>>1==40){h=q<81?""+b:String.fromCharCode(b&255)
+if(q>>1==40){
+h=q<81?""+b:String.fromCharCode(b&255)
 if(o.length+h.length>65536)throw 11
 o+=h}
 if(q==82)L=[I[i++]??-1]
